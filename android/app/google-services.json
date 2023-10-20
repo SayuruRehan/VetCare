@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "960640225165",
+    "project_id": "vetcare-6a67d",
+    "storage_bucket": "vetcare-6a67d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960640225165:android:4bce46f6755873c12d77c4",
+        "android_client_info": {
+          "package_name": "com.flutterflow.sniffsocial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsE8FGGd66QmK_EO-vz00F2CXzrcr5pAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
