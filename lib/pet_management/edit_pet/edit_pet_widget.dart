@@ -357,7 +357,7 @@ class _EditPetWidgetState extends State<EditPetWidget> {
                                 );
                               },
                               text: FFLocalizations.of(context).getText(
-                                'l1mr29ct' /* UPDATE */,
+                                'tydbe1f6' /* UPDATE */,
                               ),
                               options: FFButtonOptions(
                                 height: 40.0,

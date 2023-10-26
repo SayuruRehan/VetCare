@@ -101,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget>
                         EdgeInsetsDirectional.fromSTEB(15.0, 55.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'iwuz9bak' /* VetCare */,
+                        '0ulph4nu' /* VetCare */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Urbanist',

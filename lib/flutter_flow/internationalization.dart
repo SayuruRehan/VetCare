@@ -107,7 +107,7 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // login
   {
-    'iwuz9bak': {
+    '0ulph4nu': {
       'en': 'VetCare',
       'si': '',
     },
@@ -366,6 +366,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for friends...',
       'si': '',
     },
+    'a11b427t': {
+      'en': '',
+      'si': '',
+    },
     '6khfms91': {
       'en': 'Invite to Chat',
       'si': '',
@@ -510,10 +514,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Scheduled Appointments',
       'si': '',
     },
-    '292eshsc': {
-      'en': 'user@domainname.com',
-      'si': '',
-    },
     '72wb38tu': {
       'en': 'View',
       'si': '',
@@ -620,7 +620,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // VetAddAppointment
   {
     'tuz4jfov': {
-      'en': 'Edit Appointment',
+      'en': 'Add Appointment',
       'si': '',
     },
     '4cjro8f9': {
@@ -632,7 +632,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'si': '',
     },
     'tr81q6pj': {
-      'en': 'Pet owner name',
+      'en': 'Pet name',
       'si': '',
     },
     '1wmvmot3': {
@@ -644,7 +644,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'si': '',
     },
     'rccnhhjk': {
-      'en': 'Update',
+      'en': 'Add',
+      'si': '',
+    },
+    'rl3onry7': {
+      'en': 'View',
       'si': '',
     },
     'bikcyjnd': {
@@ -749,115 +753,117 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'si': '',
     },
   },
-  // EditPres
-  {
-    'l8qrpv93': {
-      'en': 'Edit Prescription',
-      'si': '',
-    },
-    '1se1bo0w': {
-      'en': 'Call Us',
-      'si': '',
-    },
-    't02pryt4': {
-      'en': 'Email Us',
-      'si': '',
-    },
-    'mvlyuu4v': {
-      'en': 'Search FAQs',
-      'si': '',
-    },
-    '48666muc': {
-      'en': 'PrescriptionId',
-      'si': '',
-    },
-    'k19f903g': {
-      'en': 'Prescribed Date',
-      'si': '',
-    },
-    '6er63e2h': {
-      'en': 'Pet Name',
-      'si': '',
-    },
-    'o9okq13r': {
-      'en': 'Vet Name',
-      'si': '',
-    },
-    'odyllxoo': {
-      'en': 'Exp Date',
-      'si': '',
-    },
-    'jn3marl8': {
-      'en': 'Page Title',
-      'si': '',
-    },
-    '7sgquo12': {
-      'en': 'Home',
-      'si': '',
-    },
-  },
-  // PresList
-  {
-    'iesykr07': {
-      'en': 'Prescriptions',
-      'si': '',
-    },
-    '4fuagayw': {
-      'en': 'Search for prescriptions..',
-      'si': '',
-    },
-    'txl7ljvo': {
-      'en': 'Patients matching search',
-      'si': '',
-    },
-    '8tsaki2d': {
-      'en': '24',
-      'si': '',
-    },
-    'ziw9u3br': {
-      'en': 'Randy Rudolph',
-      'si': '',
-    },
-    '384zzrj1': {
-      'en': 'Randie Mcmullens',
-      'si': '',
-    },
-    'eu4dkcci': {
-      'en': 'Raney Bold',
-      'si': '',
-    },
-    'x39e7lqb': {
-      'en': 'Ragina Smith',
-      'si': '',
-    },
-    '3yrqrhne': {
-      'en': 'Ra Kuo',
-      'si': '',
-    },
-    'i5jij8oy': {
-      'en': 'Raku Davis',
-      'si': '',
-    },
-    'drlkoqhz': {
-      'en': 'Raku Davis',
-      'si': '',
-    },
-    'hred6ok5': {
-      'en': 'prescription',
-      'si': '',
-    },
-  },
   // EditPet
   {
     'e23ie10m': {
       'en': 'Edit Pet',
       'si': '',
     },
-    'l1mr29ct': {
+    'tydbe1f6': {
       'en': 'UPDATE',
       'si': '',
     },
     'kz643yld': {
+      'en': 'Home',
+      'si': '',
+    },
+  },
+  // VetUpdateAppointmen
+  {
+    'f47pz8l9': {
+      'en': 'Update Appointment',
+      'si': '',
+    },
+    'qp8k5xzn': {
+      'en': 'Date',
+      'si': '',
+    },
+    'g6x9mbss': {
+      'en': 'Time\n',
+      'si': '',
+    },
+    'm5oao4gm': {
+      'en': 'Update',
+      'si': '',
+    },
+    'n8vyrahr': {
+      'en': 'Home',
+      'si': '',
+    },
+  },
+  // CreatePres
+  {
+    'bquelmnp': {
+      'en': 'Pet Name',
+      'si': '',
+    },
+    '6zyyqixx': {
+      'en': 'Max',
+      'si': '',
+    },
+    'rmdlf9c0': {
+      'en': 'Vetenarians\' Name\n',
+      'si': '',
+    },
+    'b6qo1fse': {
+      'en': 'John Doe',
+      'si': '',
+    },
+    'aq6jnnyt': {
+      'en': 'Prescribed Date\n',
+      'si': '',
+    },
+    'suxb29cu': {
+      'en': 'Pres Date',
+      'si': '',
+    },
+    'q1zijnob': {
+      'en': 'Expiary Date\n',
+      'si': '',
+    },
+    's9racx2m': {
+      'en': 'EXP Date',
+      'si': '',
+    },
+    'o6zmlp9w': {
+      'en': 'Create',
+      'si': '',
+    },
+    'tiz5dlrc': {
+      'en': 'View',
+      'si': '',
+    },
+    'q29upblm': {
+      'en': 'Add Prescription',
+      'si': '',
+    },
+    'rawga544': {
+      'en': 'Pres',
+      'si': '',
+    },
+  },
+  // EditPres
+  {
+    'i754unsu': {
+      'en': 'Update',
+      'si': '',
+    },
+    'i14bn2en': {
+      'en': 'Edit Prescription',
+      'si': '',
+    },
+    'l2dxzka3': {
+      'en': 'Home',
+      'si': '',
+    },
+  },
+  // InviteUsers
+  {
+    '6henriot': {
+      'en': 'Invite User',
+      'si': '',
+    },
+    'q2caqngf': {
       'en': 'Home',
       'si': '',
     },

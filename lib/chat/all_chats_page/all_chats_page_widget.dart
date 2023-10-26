@@ -52,7 +52,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          context.pushNamed('createGroupChat');
+          context.pushNamed('InviteUsers');
         },
         backgroundColor: FlutterFlowTheme.of(context).primary,
         elevation: 8.0,

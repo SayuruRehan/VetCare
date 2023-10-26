@@ -12,6 +12,8 @@ import 'schema/pet_record.dart';
 import 'schema/prescription_record.dart';
 import 'schema/appointment_record.dart';
 import 'schema/vet_record.dart';
+import 'schema/userdetails_record.dart';
+import 'schema/prescription_list_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,6 +28,8 @@ export 'schema/pet_record.dart';
 export 'schema/prescription_record.dart';
 export 'schema/appointment_record.dart';
 export 'schema/vet_record.dart';
+export 'schema/userdetails_record.dart';
+export 'schema/prescription_list_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -281,6 +285,80 @@ Future<List<VetRecord>> queryVetRecordOnce({
     queryCollectionOnce(
       VetRecord.collection,
       VetRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query UserdetailsRecords (as a Stream and as a Future).
+Future<int> queryUserdetailsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      UserdetailsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<UserdetailsRecord>> queryUserdetailsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UserdetailsRecord.collection,
+      UserdetailsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UserdetailsRecord>> queryUserdetailsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UserdetailsRecord.collection,
+      UserdetailsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query PrescriptionListRecords (as a Stream and as a Future).
+Future<int> queryPrescriptionListRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      PrescriptionListRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<PrescriptionListRecord>> queryPrescriptionListRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      PrescriptionListRecord.collection,
+      PrescriptionListRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<PrescriptionListRecord>> queryPrescriptionListRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      PrescriptionListRecord.collection,
+      PrescriptionListRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

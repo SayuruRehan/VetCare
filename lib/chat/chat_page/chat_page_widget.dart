@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/chat/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -112,44 +113,12 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               ),
             if (!isGroupChat())
               Text(
-                widget.chatUser!.displayName,
+                currentUserEmail,
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
           ],
         ),
-        actions: [
-          Visibility(
-            visible: isGroupChat(),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed(
-                    'addChatUsers',
-                    queryParameters: {
-                      'chat': serializeParam(
-                        _chatInfo!.chatRecord,
-                        ParamType.Document,
-                      ),
-                    }.withoutNulls,
-                    extra: <String, dynamic>{
-                      'chat': _chatInfo!.chatRecord,
-                    },
-                  );
-                },
-                child: Icon(
-                  Icons.person_add,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-              ),
-            ),
-          ),
-        ],
+        actions: [],
         centerTitle: false,
         elevation: 2.0,
       ),

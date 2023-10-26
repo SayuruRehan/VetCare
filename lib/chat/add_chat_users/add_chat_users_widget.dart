@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/chat/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -197,112 +198,133 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                     ),
                   );
                 }
-                List<UsersRecord> listViewUsersRecordList = snapshot.data!;
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: listViewUsersRecordList.length,
-                  itemBuilder: (context, listViewIndex) {
-                    final listViewUsersRecord =
-                        listViewUsersRecordList[listViewIndex];
-                    return Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 70.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 0.0,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              offset: Offset(0.0, 2.0),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(0.0),
+                List<UsersRecord> listViewUsersRecordList = snapshot.data!
+                    .where((u) => u.uid != currentUserUid)
+                    .toList();
+                return InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed(
+                      'chatPage',
+                      queryParameters: {
+                        'chatUser': serializeParam(
+                          listViewUsersRecordList.first,
+                          ParamType.Document,
                         ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xFF4E39F9),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2.0, 2.0, 2.0, 2.0),
-                                  child: Container(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      valueOrDefault<String>(
-                                        listViewUsersRecord.photoUrl,
-                                        'https://picsum.photos/seed/495/600',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2.0, 0.0, 0.0, 0.0),
-                                  child: Theme(
-                                    data: ThemeData(
-                                      unselectedWidgetColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                    ),
-                                    child: CheckboxListTile(
-                                      value: _model.checkboxListTileValueMap[
-                                              listViewUsersRecord] ??=
-                                          widget.chat!.users.contains(
-                                              listViewUsersRecord.reference),
-                                      onChanged: (newValue) async {
-                                        setState(() => _model
-                                                .checkboxListTileValueMap[
-                                            listViewUsersRecord] = newValue!);
-                                      },
-                                      title: Text(
-                                        listViewUsersRecord.displayName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium,
-                                      ),
-                                      subtitle: Text(
-                                        listViewUsersRecord.email,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
-                                      ),
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      checkColor:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                      dense: false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.trailing,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      }.withoutNulls,
+                      extra: <String, dynamic>{
+                        'chatUser': listViewUsersRecordList.first,
+                      },
                     );
                   },
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewUsersRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewUsersRecord =
+                          listViewUsersRecordList[listViewIndex];
+                      return Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 70.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 0.0,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                offset: Offset(0.0, 2.0),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: Color(0xFF4E39F9),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2.0, 2.0, 2.0, 2.0),
+                                    child: Container(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        valueOrDefault<String>(
+                                          listViewUsersRecord.photoUrl,
+                                          'https://picsum.photos/seed/495/600',
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2.0, 0.0, 0.0, 0.0),
+                                    child: Theme(
+                                      data: ThemeData(
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                      ),
+                                      child: CheckboxListTile(
+                                        value: _model.checkboxListTileValueMap[
+                                                listViewUsersRecord] ??=
+                                            widget.chat!.users.contains(
+                                                listViewUsersRecord.reference),
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .checkboxListTileValueMap[
+                                              listViewUsersRecord] = newValue!);
+                                        },
+                                        title: Text(
+                                          listViewUsersRecord.email,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        dense: false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.trailing,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 );
               },
             ),
@@ -311,7 +333,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
             width: double.infinity,
             height: 100.0,
             decoration: BoxDecoration(
-              color: Color(0xFF4E39F9),
+              color: FlutterFlowTheme.of(context).warning,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
@@ -350,7 +372,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFF4E39F9),
+                  color: FlutterFlowTheme.of(context).primary,
                   textStyle:
                       FlutterFlowTheme.of(context).headlineSmall.override(
                             fontFamily: 'Lexend Deca',

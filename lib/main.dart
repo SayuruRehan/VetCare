@@ -134,8 +134,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'vetdashboard': VetdashboardWidget(),
-      'PresList': PresListWidget(),
-      'ViewAllAppointements': ViewAllAppointementsWidget(),
+      'VetAddAppointment': VetAddAppointmentWidget(),
+      'CreatePres': CreatePresWidget(),
       'allChatsPage': AllChatsPageWidget(),
       'editSettings': EditSettingsWidget(),
     };
@@ -198,15 +198,15 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  currentIndex == 1 ? Icons.note_alt : Icons.note_alt,
+                  Icons.home_outlined,
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primary
                       : FlutterFlowTheme.of(context).grayIcon,
-                  size: currentIndex == 1 ? 36.0 : 24.0,
+                  size: 24.0,
                 ),
                 Text(
                   FFLocalizations.of(context).getText(
-                    'hred6ok5' /* prescription */,
+                    'bikcyjnd' /* Home */,
                   ),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -224,17 +224,15 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  currentIndex == 2
-                      ? Icons.medical_services
-                      : Icons.medical_services,
+                  Icons.note_alt_sharp,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primary
                       : FlutterFlowTheme.of(context).grayIcon,
-                  size: currentIndex == 2 ? 36.0 : 24.0,
+                  size: 24.0,
                 ),
                 Text(
                   FFLocalizations.of(context).getText(
-                    'euy1n494' /* Appointments */,
+                    'rawga544' /* Pres */,
                   ),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

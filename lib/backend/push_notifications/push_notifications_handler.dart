@@ -138,18 +138,38 @@ final parametersBuilderMap =
   'VetSinglePet': ParameterData.none(),
   'ViewAllAppointements': ParameterData.none(),
   'SelectDate': ParameterData.none(),
-  'AddPrec': ParameterData.none(),
+  'AddPrec': (data) async => ParameterData(
+        allParams: {
+          'dateTime': getParameter<DateTime>(data, 'dateTime'),
+        },
+      ),
   'VetAddAppointment': ParameterData.none(),
-  'DeleteAppointment': ParameterData.none(),
+  'DeleteAppointment': (data) async => ParameterData(
+        allParams: {
+          'vetAppointementDeleteRef':
+              getParameter<DocumentReference>(data, 'vetAppointementDeleteRef'),
+        },
+      ),
   'owner-ViewAppointments': ParameterData.none(),
   'ViewPrec': ParameterData.none(),
-  'EditPres': ParameterData.none(),
-  'PresList': ParameterData.none(),
   'EditPet': (data) async => ParameterData(
         allParams: {
           'userRef': getParameter<DocumentReference>(data, 'userRef'),
         },
       ),
+  'VetUpdateAppointmen': (data) async => ParameterData(
+        allParams: {
+          'vetAppointmentRef':
+              getParameter<DocumentReference>(data, 'vetAppointmentRef'),
+        },
+      ),
+  'CreatePres': ParameterData.none(),
+  'EditPres': (data) async => ParameterData(
+        allParams: {
+          'presRef': getParameter<DocumentReference>(data, 'presRef'),
+        },
+      ),
+  'InviteUsers': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

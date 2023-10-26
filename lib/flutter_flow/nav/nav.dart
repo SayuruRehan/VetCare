@@ -175,9 +175,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ViewAllAppointements',
               path: 'viewAllAppointements',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'ViewAllAppointements')
-                  : ViewAllAppointementsWidget(),
+              builder: (context, params) => ViewAllAppointementsWidget(),
             ),
             FFRoute(
               name: 'SelectDate',
@@ -187,17 +185,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AddPrec',
               path: 'addPrec',
-              builder: (context, params) => AddPrecWidget(),
+              builder: (context, params) => AddPrecWidget(
+                dateTime: params.getParam('dateTime', ParamType.DateTime),
+              ),
             ),
             FFRoute(
               name: 'VetAddAppointment',
               path: 'vetAddAppointment',
-              builder: (context, params) => VetAddAppointmentWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'VetAddAppointment')
+                  : VetAddAppointmentWidget(),
             ),
             FFRoute(
               name: 'DeleteAppointment',
               path: 'deleteAppointment',
-              builder: (context, params) => DeleteAppointmentWidget(),
+              builder: (context, params) => DeleteAppointmentWidget(
+                vetAppointementDeleteRef: params.getParam(
+                    'vetAppointementDeleteRef',
+                    ParamType.DocumentReference,
+                    false,
+                    ['appointment']),
+              ),
             ),
             FFRoute(
               name: 'owner-ViewAppointments',
@@ -210,18 +218,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ViewPrecWidget(),
             ),
             FFRoute(
-              name: 'EditPres',
-              path: 'editPres',
-              builder: (context, params) => EditPresWidget(),
-            ),
-            FFRoute(
-              name: 'PresList',
-              path: 'presList',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'PresList')
-                  : PresListWidget(),
-            ),
-            FFRoute(
               name: 'EditPet',
               path: 'editPet',
               builder: (context, params) => NavBarPage(
@@ -231,6 +227,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                       'userRef', ParamType.DocumentReference, false, ['pet']),
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'VetUpdateAppointmen',
+              path: 'vetUpdateAppointmen',
+              builder: (context, params) => VetUpdateAppointmenWidget(
+                vetAppointmentRef: params.getParam('vetAppointmentRef',
+                    ParamType.DocumentReference, false, ['appointment']),
+              ),
+            ),
+            FFRoute(
+              name: 'CreatePres',
+              path: 'createPres',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'CreatePres')
+                  : CreatePresWidget(),
+            ),
+            FFRoute(
+              name: 'EditPres',
+              path: 'editPres',
+              builder: (context, params) => EditPresWidget(
+                presRef: params.getParam('presRef', ParamType.DocumentReference,
+                    false, ['PrescriptionList']),
+              ),
+            ),
+            FFRoute(
+              name: 'InviteUsers',
+              path: 'inviteUsers',
+              builder: (context, params) => InviteUsersWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

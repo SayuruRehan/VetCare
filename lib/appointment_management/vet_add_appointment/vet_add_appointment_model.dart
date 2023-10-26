@@ -1,8 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'vet_add_appointment_widget.dart' show VetAddAppointmentWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,15 +28,16 @@ class VetAddAppointmentModel extends FlutterFlowModel<VetAddAppointmentWidget> {
   FocusNode? vetNameFocusNode3;
   TextEditingController? vetNameController3;
   String? Function(BuildContext, String?)? vetNameController3Validator;
-  DateTime? datePicked;
   // State field(s) for date widget.
   FocusNode? dateFocusNode;
   TextEditingController? dateController;
   String? Function(BuildContext, String?)? dateControllerValidator;
+  DateTime? datePicked1;
   // State field(s) for time widget.
   FocusNode? timeFocusNode;
   TextEditingController? timeController;
   String? Function(BuildContext, String?)? timeControllerValidator;
+  DateTime? datePicked2;
 
   /// Initialization and disposal methods.
 

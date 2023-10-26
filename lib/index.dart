@@ -37,8 +37,11 @@ export '/owner_view_appointments/owner_view_appointments_widget.dart'
     show OwnerViewAppointmentsWidget;
 export '/prescription_management/view_prec/view_prec_widget.dart'
     show ViewPrecWidget;
+export '/pet_management/edit_pet/edit_pet_widget.dart' show EditPetWidget;
+export '/appointment_management/vet_update_appointmen/vet_update_appointmen_widget.dart'
+    show VetUpdateAppointmenWidget;
+export '/prescription_management/create_pres/create_pres_widget.dart'
+    show CreatePresWidget;
 export '/prescription_management/edit_pres/edit_pres_widget.dart'
     show EditPresWidget;
-export '/prescription_management/pres_list/pres_list_widget.dart'
-    show PresListWidget;
-export '/pet_management/edit_pet/edit_pet_widget.dart' show EditPetWidget;
+export '/chat/invite_users/invite_users_widget.dart' show InviteUsersWidget;

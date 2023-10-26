@@ -1,7 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +13,12 @@ import 'add_prec_model.dart';
 export 'add_prec_model.dart';
 
 class AddPrecWidget extends StatefulWidget {
-  const AddPrecWidget({Key? key}) : super(key: key);
+  const AddPrecWidget({
+    Key? key,
+    this.dateTime,
+  }) : super(key: key);
+
+  final DateTime? dateTime;
 
   @override
   _AddPrecWidgetState createState() => _AddPrecWidgetState();
@@ -198,6 +206,11 @@ class _AddPrecWidgetState extends State<AddPrecWidget> {
                         TextFormField(
                           controller: _model.textController2,
                           focusNode: _model.textFieldFocusNode2,
+                          onFieldSubmitted: (_) async {
+                            await PrescriptionRecord.collection
+                                .doc()
+                                .set(createPrescriptionRecordData());
+                          },
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
