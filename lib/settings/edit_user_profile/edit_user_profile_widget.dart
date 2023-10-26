@@ -100,7 +100,10 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
               FFLocalizations.of(context).getText(
                 'tn7ddkol' /* Your Profile */,
               ),
-              style: FlutterFlowTheme.of(context).headlineMedium,
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Urbanist',
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             actions: [],
             centerTitle: false,
@@ -123,11 +126,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'psxlze8i' /* Fill out your profile now in o... */,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 25.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'psxlze8i' /* Fill out your profile now in o... */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context).bodySmall,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodySmall,
                               ),
                             ),
                           ],
@@ -322,7 +329,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       '0isqp0ax' /* UserName */,
                                     ),
                                     labelStyle:
-                                        FlutterFlowTheme.of(context).bodySmall,
+                                        FlutterFlowTheme.of(context).titleSmall,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
@@ -392,8 +399,12 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   focusNode: _model.bioFocusNode,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText:
+                                        FFLocalizations.of(context).getText(
+                                      'ep7y2fzw' /* Bio */,
+                                    ),
                                     labelStyle:
-                                        FlutterFlowTheme.of(context).bodySmall,
+                                        FlutterFlowTheme.of(context).titleSmall,
                                     hintText:
                                         FFLocalizations.of(context).getText(
                                       'kjm928o6' /* Your Bio */,
@@ -466,43 +477,46 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 40.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                displayName: _model.yourNameController.text,
-                                userName: _model.userNameController.text,
-                                photoUrl: _model.uploadedFileUrl,
-                                bio: _model.bioController.text,
-                              ));
-                              context.pop();
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'yzqxvvu0' /* Save Changes */,
-                            ),
-                            options: FFButtonOptions(
-                              width: 200.0,
-                              height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Urbanist',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 2.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 40.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  displayName: _model.yourNameController.text,
+                                  userName: _model.userNameController.text,
+                                  photoUrl: _model.uploadedFileUrl,
+                                  bio: _model.bioController.text,
+                                ));
+                                context.pop();
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'yzqxvvu0' /* Save Changes */,
                               ),
-                              borderRadius: BorderRadius.circular(40.0),
+                              options: FFButtonOptions(
+                                width: 200.0,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Urbanist',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 2.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(40.0),
+                              ),
                             ),
                           ),
                         ),

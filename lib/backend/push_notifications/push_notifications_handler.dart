@@ -135,7 +135,11 @@ final parametersBuilderMap =
       ),
   'createGroupChat': ParameterData.none(),
   'vetdashboard': ParameterData.none(),
-  'VetSinglePet': ParameterData.none(),
+  'VetSinglePet': (data) async => ParameterData(
+        allParams: {
+          'petRef': getParameter<DocumentReference>(data, 'petRef'),
+        },
+      ),
   'ViewAllAppointements': ParameterData.none(),
   'SelectDate': ParameterData.none(),
   'AddPrec': (data) async => ParameterData(
@@ -143,13 +147,15 @@ final parametersBuilderMap =
           'dateTime': getParameter<DateTime>(data, 'dateTime'),
         },
       ),
-  'VetAddAppointment': ParameterData.none(),
-  'DeleteAppointment': (data) async => ParameterData(
+  'VetAddAppointment': (data) async => ParameterData(
         allParams: {
-          'vetAppointementDeleteRef':
-              getParameter<DocumentReference>(data, 'vetAppointementDeleteRef'),
+          'vetDoc': await getDocumentParameter<VetRecord>(
+              data, 'vetDoc', VetRecord.fromSnapshot),
+          'specialityDoc': await getDocumentParameter<VetRecord>(
+              data, 'specialityDoc', VetRecord.fromSnapshot),
         },
       ),
+  'AddPet': ParameterData.none(),
   'owner-ViewAppointments': ParameterData.none(),
   'ViewPrec': ParameterData.none(),
   'EditPet': (data) async => ParameterData(
@@ -170,6 +176,8 @@ final parametersBuilderMap =
         },
       ),
   'InviteUsers': ParameterData.none(),
+  'AddAppoint': ParameterData.none(),
+  'ViewAppoint': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

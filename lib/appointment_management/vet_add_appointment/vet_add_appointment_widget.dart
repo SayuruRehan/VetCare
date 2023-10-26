@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,14 @@ import 'vet_add_appointment_model.dart';
 export 'vet_add_appointment_model.dart';
 
 class VetAddAppointmentWidget extends StatefulWidget {
-  const VetAddAppointmentWidget({Key? key}) : super(key: key);
+  const VetAddAppointmentWidget({
+    Key? key,
+    this.vetDoc,
+    this.specialityDoc,
+  }) : super(key: key);
+
+  final VetRecord? vetDoc;
+  final VetRecord? specialityDoc;
 
   @override
   _VetAddAppointmentWidgetState createState() =>
@@ -31,12 +40,8 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
     super.initState();
     _model = createModel(context, () => VetAddAppointmentModel());
 
-    _model.vetNameController1 ??= TextEditingController();
-    _model.vetNameFocusNode1 ??= FocusNode();
-    _model.vetNameController2 ??= TextEditingController();
-    _model.vetNameFocusNode2 ??= FocusNode();
-    _model.vetNameController3 ??= TextEditingController();
-    _model.vetNameFocusNode3 ??= FocusNode();
+    _model.vetNameController ??= TextEditingController();
+    _model.vetNameFocusNode ??= FocusNode();
     _model.dateController ??= TextEditingController();
     _model.dateFocusNode ??= FocusNode();
     _model.timeController ??= TextEditingController();
@@ -156,90 +161,162 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      StreamBuilder<List<VetRecord>>(
+                                        stream: queryVetRecord(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    Color(0xBDF97639),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<VetRecord>
+                                              dropDownVetVetRecordList =
+                                              snapshot.data!;
+                                          return FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownVetValueController ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            options: dropDownVetVetRecordList
+                                                .map((e) => e.vetName)
+                                                .toList(),
+                                            onChanged: (val) => setState(() =>
+                                                _model.dropDownVetValue = val),
+                                            width: 333.0,
+                                            height: 50.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Urbanist',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                    ),
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'td93szsk' /* Select Veterinarian */,
+                                            ),
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .gray200,
+                                            borderWidth: 2.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 4.0, 16.0, 4.0),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 16.0),
-                                        child: Container(
-                                          width: 370.0,
-                                          child: TextFormField(
-                                            controller:
-                                                _model.vetNameController1,
-                                            focusNode: _model.vetNameFocusNode1,
-                                            autofocus: true,
-                                            autofillHints: [
-                                              AutofillHints.email
-                                            ],
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText:
+                                            0.0, 20.0, 0.0, 0.0),
+                                        child: StreamBuilder<List<VetRecord>>(
+                                          stream: queryVetRecord(),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      Color(0xBDF97639),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<VetRecord>
+                                                dropDownSpecialityVetRecordList =
+                                                snapshot.data!;
+                                            return FlutterFlowDropDown<String>(
+                                              controller: _model
+                                                      .dropDownSpecialityValueController ??=
+                                                  FormFieldController<String>(
+                                                      null),
+                                              options:
+                                                  dropDownSpecialityVetRecordList
+                                                      .map((e) =>
+                                                          e.vetSpeciality)
+                                                      .toList(),
+                                              onChanged: (val) => setState(() =>
+                                                  _model.dropDownSpecialityValue =
+                                                      val),
+                                              width: 340.0,
+                                              height: 50.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '4cjro8f9' /* Veterinarian name */,
+                                                '2sojj7gp' /* Select speciality */,
                                               ),
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
+                                              icon: Icon(
+                                                Icons
+                                                    .keyboard_arrow_down_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              filled: true,
                                               fillColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            validator: _model
-                                                .vetNameController1Validator
-                                                .asValidator(context),
-                                          ),
+                                                      .secondaryBackground,
+                                              elevation: 2.0,
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .gray200,
+                                              borderWidth: 2.0,
+                                              borderRadius: 8.0,
+                                              margin: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 4.0, 16.0, 4.0),
+                                              hidesUnderline: true,
+                                              isSearchable: false,
+                                              isMultiSelect: false,
+                                            );
+                                          },
                                         ),
                                       ),
                                     ],
@@ -251,106 +328,13 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 16.0),
+                                            0.0, 20.0, 0.0, 16.0),
                                         child: Container(
                                           width: 370.0,
                                           child: TextFormField(
                                             controller:
-                                                _model.vetNameController2,
-                                            focusNode: _model.vetNameFocusNode2,
-                                            autofocus: true,
-                                            autofillHints: [
-                                              AutofillHints.email
-                                            ],
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '4k32vx5x' /* Speciality */,
-                                              ),
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            validator: _model
-                                                .vetNameController2Validator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 16.0),
-                                        child: Container(
-                                          width: 370.0,
-                                          child: TextFormField(
-                                            controller:
-                                                _model.vetNameController3,
-                                            focusNode: _model.vetNameFocusNode3,
+                                                _model.vetNameController,
+                                            focusNode: _model.vetNameFocusNode,
                                             autofocus: true,
                                             autofillHints: [
                                               AutofillHints.email
@@ -376,7 +360,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryBackground,
+                                                      .gray200,
                                                   width: 2.0,
                                                 ),
                                                 borderRadius:
@@ -394,9 +378,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
+                                                  color: Color(0xFFFFF4A5),
                                                   width: 2.0,
                                                 ),
                                                 borderRadius:
@@ -405,9 +387,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
+                                                  color: Color(0xFFFFF4A5),
                                                   width: 2.0,
                                                 ),
                                                 borderRadius:
@@ -423,7 +403,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                             keyboardType:
                                                 TextInputType.emailAddress,
                                             validator: _model
-                                                .vetNameController3Validator
+                                                .vetNameControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -453,7 +433,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                   focusNode:
                                                       _model.dateFocusNode,
                                                   onFieldSubmitted: (_) async {
-                                                    final _datePicked1Date =
+                                                    final _datePickedDate =
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
@@ -463,15 +443,31 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                       lastDate: DateTime(2050),
                                                     );
 
-                                                    if (_datePicked1Date !=
+                                                    TimeOfDay? _datePickedTime;
+                                                    if (_datePickedDate !=
                                                         null) {
+                                                      _datePickedTime =
+                                                          await showTimePicker(
+                                                        context: context,
+                                                        initialTime: TimeOfDay
+                                                            .fromDateTime(
+                                                                getCurrentTimestamp),
+                                                      );
+                                                    }
+
+                                                    if (_datePickedDate !=
+                                                            null &&
+                                                        _datePickedTime !=
+                                                            null) {
                                                       safeSetState(() {
-                                                        _model.datePicked1 =
+                                                        _model.datePicked =
                                                             DateTime(
-                                                          _datePicked1Date.year,
-                                                          _datePicked1Date
-                                                              .month,
-                                                          _datePicked1Date.day,
+                                                          _datePickedDate.year,
+                                                          _datePickedDate.month,
+                                                          _datePickedDate.day,
+                                                          _datePickedTime!.hour,
+                                                          _datePickedTime
+                                                              .minute,
                                                         );
                                                       });
                                                     }
@@ -486,7 +482,7 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '1wmvmot3' /* Date */,
+                                                      '1wmvmot3' /* Date  */,
                                                     ),
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
@@ -500,9 +496,10 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                     enabledBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .gray200,
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -578,30 +575,6 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                       _model.timeController,
                                                   focusNode:
                                                       _model.timeFocusNode,
-                                                  onFieldSubmitted: (_) async {
-                                                    final _datePicked2Date =
-                                                        await showDatePicker(
-                                                      context: context,
-                                                      initialDate:
-                                                          getCurrentTimestamp,
-                                                      firstDate:
-                                                          getCurrentTimestamp,
-                                                      lastDate: DateTime(2050),
-                                                    );
-
-                                                    if (_datePicked2Date !=
-                                                        null) {
-                                                      safeSetState(() {
-                                                        _model.datePicked2 =
-                                                            DateTime(
-                                                          _datePicked2Date.year,
-                                                          _datePicked2Date
-                                                              .month,
-                                                          _datePicked2Date.day,
-                                                        );
-                                                      });
-                                                    }
-                                                  },
                                                   autofocus: true,
                                                   autofillHints: [
                                                     AutofillHints.email
@@ -628,9 +601,10 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                                     enabledBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .gray200,
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -706,14 +680,13 @@ class _VetAddAppointmentWidgetState extends State<VetAddAppointmentWidget> {
                                         await AppointmentRecord.collection
                                             .doc()
                                             .set(createAppointmentRecordData(
-                                              vetName: _model
-                                                  .vetNameController1.text,
-                                              petName: _model
-                                                  .vetNameController3.text,
+                                              vetName: _model.dropDownVetValue,
+                                              petName:
+                                                  _model.vetNameController.text,
                                               vetSpeciality: _model
-                                                  .vetNameController2.text,
-                                              date: _model.datePicked1,
+                                                  .dropDownSpecialityValue,
                                               isComplete: false,
+                                              date: _model.datePicked,
                                             ));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

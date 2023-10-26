@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,11 @@ class _VetUpdateAppointmenWidgetState extends State<VetUpdateAppointmenWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VetUpdateAppointmenModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      context.pushNamed('ViewAllAppointements');
+    });
 
     _model.vetNameController1 ??= TextEditingController();
     _model.vetNameFocusNode1 ??= FocusNode();
@@ -86,8 +92,8 @@ class _VetUpdateAppointmenWidgetState extends State<VetUpdateAppointmenWidget> {
               color: FlutterFlowTheme.of(context).primaryDark,
               size: 30.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.safePop();
             },
           ),
           actions: [],
@@ -783,6 +789,8 @@ class _VetUpdateAppointmenWidgetState extends State<VetUpdateAppointmenWidget> {
                                                   .vetNameController3.text,
                                               vetSpeciality: _model
                                                   .vetNameController2.text,
+                                              appointmentId: '',
+                                              date: _model.datePicked,
                                             ));
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(

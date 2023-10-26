@@ -31,8 +31,7 @@ export '/prescription_management/add_prec/add_prec_widget.dart'
     show AddPrecWidget;
 export '/appointment_management/vet_add_appointment/vet_add_appointment_widget.dart'
     show VetAddAppointmentWidget;
-export '/appointment_management/delete_appointment/delete_appointment_widget.dart'
-    show DeleteAppointmentWidget;
+export '/pet_management/add_pet/add_pet_widget.dart' show AddPetWidget;
 export '/owner_view_appointments/owner_view_appointments_widget.dart'
     show OwnerViewAppointmentsWidget;
 export '/prescription_management/view_prec/view_prec_widget.dart'
@@ -45,3 +44,7 @@ export '/prescription_management/create_pres/create_pres_widget.dart'
 export '/prescription_management/edit_pres/edit_pres_widget.dart'
     show EditPresWidget;
 export '/chat/invite_users/invite_users_widget.dart' show InviteUsersWidget;
+export '/appointment_management/add_appoint/add_appoint_widget.dart'
+    show AddAppointWidget;
+export '/appointment_management/view_appoint/view_appoint_widget.dart'
+    show ViewAppointWidget;

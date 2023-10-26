@@ -133,9 +133,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'vetdashboard': VetdashboardWidget(),
-      'VetAddAppointment': VetAddAppointmentWidget(),
+      'AddAppoint': AddAppointWidget(),
       'CreatePres': CreatePresWidget(),
+      'vetdashboard': VetdashboardWidget(),
       'allChatsPage': AllChatsPageWidget(),
       'editSettings': EditSettingsWidget(),
     };
@@ -157,7 +157,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
+        selectedItemColor: FlutterFlowTheme.of(context).secondary,
         unselectedItemColor: FlutterFlowTheme.of(context).grayIcon,
         selectedBackgroundColor: Color(0x00000000),
         borderRadius: 8.0,
@@ -172,46 +172,20 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  currentIndex == 0 ? Icons.pets : Icons.pets,
+                  Icons.medical_services_rounded,
                   color: currentIndex == 0
-                      ? FlutterFlowTheme.of(context).primary
-                      : FlutterFlowTheme.of(context).grayIcon,
-                  size: currentIndex == 0 ? 32.0 : 24.0,
-                ),
-                Text(
-                  FFLocalizations.of(context).getText(
-                    'qmkt9lzd' /* Pets */,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: currentIndex == 0
-                        ? FlutterFlowTheme.of(context).primary
-                        : FlutterFlowTheme.of(context).grayIcon,
-                    fontSize: 11.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.home_outlined,
-                  color: currentIndex == 1
-                      ? FlutterFlowTheme.of(context).primary
+                      ? FlutterFlowTheme.of(context).secondary
                       : FlutterFlowTheme.of(context).grayIcon,
                   size: 24.0,
                 ),
                 Text(
                   FFLocalizations.of(context).getText(
-                    'bikcyjnd' /* Home */,
+                    '2r10ler5' /* Home */,
                   ),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 1
-                        ? FlutterFlowTheme.of(context).primary
+                    color: currentIndex == 0
+                        ? FlutterFlowTheme.of(context).secondary
                         : FlutterFlowTheme.of(context).grayIcon,
                     fontSize: 11.0,
                   ),
@@ -225,8 +199,8 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   Icons.note_alt_sharp,
-                  color: currentIndex == 2
-                      ? FlutterFlowTheme.of(context).primary
+                  color: currentIndex == 1
+                      ? FlutterFlowTheme.of(context).secondary
                       : FlutterFlowTheme.of(context).grayIcon,
                   size: 24.0,
                 ),
@@ -236,8 +210,34 @@ class _NavBarPageState extends State<NavBarPage> {
                   ),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
+                    color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).grayIcon,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  currentIndex == 2 ? Icons.pets : Icons.pets,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).grayIcon,
+                  size: currentIndex == 2 ? 32.0 : 24.0,
+                ),
+                Text(
+                  FFLocalizations.of(context).getText(
+                    'qmkt9lzd' /* Pets */,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
                     color: currentIndex == 2
-                        ? FlutterFlowTheme.of(context).primary
+                        ? FlutterFlowTheme.of(context).secondary
                         : FlutterFlowTheme.of(context).grayIcon,
                     fontSize: 11.0,
                   ),
@@ -254,7 +254,7 @@ class _NavBarPageState extends State<NavBarPage> {
                       ? Icons.chat_bubble_outlined
                       : Icons.chat_bubble_outline,
                   color: currentIndex == 3
-                      ? FlutterFlowTheme.of(context).primary
+                      ? FlutterFlowTheme.of(context).secondary
                       : FlutterFlowTheme.of(context).grayIcon,
                   size: currentIndex == 3 ? 24.0 : 24.0,
                 ),
@@ -265,7 +265,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3
-                        ? FlutterFlowTheme.of(context).primary
+                        ? FlutterFlowTheme.of(context).secondary
                         : FlutterFlowTheme.of(context).grayIcon,
                     fontSize: 11.0,
                   ),
@@ -280,7 +280,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   currentIndex == 4 ? Icons.settings : Icons.settings,
                   color: currentIndex == 4
-                      ? FlutterFlowTheme.of(context).primary
+                      ? FlutterFlowTheme.of(context).secondary
                       : FlutterFlowTheme.of(context).grayIcon,
                   size: currentIndex == 4 ? 36.0 : 24.0,
                 ),
@@ -291,7 +291,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 4
-                        ? FlutterFlowTheme.of(context).primary
+                        ? FlutterFlowTheme.of(context).secondary
                         : FlutterFlowTheme.of(context).grayIcon,
                     fontSize: 11.0,
                   ),

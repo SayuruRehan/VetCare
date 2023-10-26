@@ -364,7 +364,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                   'zz77fdb7' /* UserName */,
                                 ),
                                 labelStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                    FlutterFlowTheme.of(context).titleSmall,
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -430,8 +430,11 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               focusNode: _model.bioFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'sajr400d' /* Bio */,
+                                ),
                                 labelStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                    FlutterFlowTheme.of(context).titleMedium,
                                 hintText: FFLocalizations.of(context).getText(
                                   'alau2r2i' /* Your Bio */,
                                 ),

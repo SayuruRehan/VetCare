@@ -1,10 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_account_model.dart';
@@ -17,10 +20,26 @@ class CreateAccountWidget extends StatefulWidget {
   _CreateAccountWidgetState createState() => _CreateAccountWidgetState();
 }
 
-class _CreateAccountWidgetState extends State<CreateAccountWidget> {
+class _CreateAccountWidgetState extends State<CreateAccountWidget>
+    with TickerProviderStateMixin {
   late CreateAccountModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'textOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeIn,
+          delay: 990.ms,
+          duration: 1150.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -73,18 +92,20 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 56.0, 0.0, 0.0),
-                    child: Image.asset(
-                      'assets/images/logoSniff@2x.png',
-                      width: 140.0,
-                      height: 40.0,
-                      fit: BoxFit.fitWidth,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 55.0, 0.0, 0.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'h60re5xh' /* VetCare */,
                     ),
-                  ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Urbanist',
+                          color: Color(0xBDFFFFFF),
+                          fontSize: 55.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ).animateOnPageLoad(
+                      animationsMap['textOnPageLoadAnimation']!),
                 ),
               ],
             ),
@@ -117,7 +138,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
-                              'aomsxjrs' /* Welcome, */,
+                              'aomsxjrs' /* Welcome! */,
                             ),
                             style: FlutterFlowTheme.of(context).displaySmall,
                           ),
@@ -137,48 +158,53 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'f65in5k5' /* Create your account below, or */,
+                                  'f65in5k5' /* Create your account or */,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  context.pushNamed(
-                                    'login',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 200),
-                                      ),
-                                    },
-                                  );
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '07a9ekz5' /* Login */,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 70.0,
-                                  height: 28.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0x00FFFFFF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Urbanist',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        fontSize: 14.0,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 1.0, 0.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    context.pushNamed(
+                                      'login',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 200),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '07a9ekz5' /* Already have an account? Login */,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  options: FFButtonOptions(
+                                    width: 200.0,
+                                    height: 28.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0x00FFFFFF),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Urbanist',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          fontSize: 14.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                             ],

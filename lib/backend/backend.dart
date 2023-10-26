@@ -14,6 +14,7 @@ import 'schema/appointment_record.dart';
 import 'schema/vet_record.dart';
 import 'schema/userdetails_record.dart';
 import 'schema/prescription_list_record.dart';
+import 'schema/appointment_list_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +31,7 @@ export 'schema/appointment_record.dart';
 export 'schema/vet_record.dart';
 export 'schema/userdetails_record.dart';
 export 'schema/prescription_list_record.dart';
+export 'schema/appointment_list_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -359,6 +361,43 @@ Future<List<PrescriptionListRecord>> queryPrescriptionListRecordOnce({
     queryCollectionOnce(
       PrescriptionListRecord.collection,
       PrescriptionListRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AppointmentListRecords (as a Stream and as a Future).
+Future<int> queryAppointmentListRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AppointmentListRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AppointmentListRecord>> queryAppointmentListRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AppointmentListRecord.collection,
+      AppointmentListRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AppointmentListRecord>> queryAppointmentListRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AppointmentListRecord.collection,
+      AppointmentListRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

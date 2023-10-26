@@ -177,7 +177,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Outfit',
-                      color: FlutterFlowTheme.of(context).tertiary,
+                      color: Colors.black,
                       fontSize: 16.0,
                       fontWeight: FontWeight.w500,
                     ),

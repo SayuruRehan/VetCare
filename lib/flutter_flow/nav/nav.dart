@@ -170,7 +170,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'VetSinglePet',
               path: 'vetSinglePet',
-              builder: (context, params) => VetSinglePetWidget(),
+              builder: (context, params) => VetSinglePetWidget(
+                petRef: params.getParam(
+                    'petRef', ParamType.DocumentReference, false, ['pet']),
+              ),
             ),
             FFRoute(
               name: 'ViewAllAppointements',
@@ -192,20 +195,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'VetAddAppointment',
               path: 'vetAddAppointment',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'VetAddAppointment')
-                  : VetAddAppointmentWidget(),
+              asyncParams: {
+                'vetDoc': getDoc(['vet'], VetRecord.fromSnapshot),
+                'specialityDoc': getDoc(['vet'], VetRecord.fromSnapshot),
+              },
+              builder: (context, params) => VetAddAppointmentWidget(
+                vetDoc: params.getParam('vetDoc', ParamType.Document),
+                specialityDoc:
+                    params.getParam('specialityDoc', ParamType.Document),
+              ),
             ),
             FFRoute(
-              name: 'DeleteAppointment',
-              path: 'deleteAppointment',
-              builder: (context, params) => DeleteAppointmentWidget(
-                vetAppointementDeleteRef: params.getParam(
-                    'vetAppointementDeleteRef',
-                    ParamType.DocumentReference,
-                    false,
-                    ['appointment']),
-              ),
+              name: 'AddPet',
+              path: 'addPet',
+              builder: (context, params) => AddPetWidget(),
             ),
             FFRoute(
               name: 'owner-ViewAppointments',
@@ -255,6 +258,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'InviteUsers',
               path: 'inviteUsers',
               builder: (context, params) => InviteUsersWidget(),
+            ),
+            FFRoute(
+              name: 'AddAppoint',
+              path: 'addAppoint',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'AddAppoint')
+                  : AddAppointWidget(),
+            ),
+            FFRoute(
+              name: 'ViewAppoint',
+              path: 'viewAppoint',
+              builder: (context, params) => ViewAppointWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
