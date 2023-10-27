@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,9 +28,6 @@ class _ViewAllAppointementsWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewAllAppointementsModel());
-
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -60,31 +56,31 @@ class _ViewAllAppointementsWidgetState
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 54.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
+              color: FlutterFlowTheme.of(context).primaryDark,
+              size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('VetAddAppointment');
+              context.pushNamed('vetdashboard');
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'tmu4581s' /* Appointments */,
+              'wzfwbh00' /* Scheduled Appointments */,
             ),
             style: FlutterFlowTheme.of(context).headlineSmall,
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 0.0,
+          centerTitle: true,
+          elevation: 2.0,
         ),
         body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
@@ -93,112 +89,49 @@ class _ViewAllAppointementsWidgetState
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: _model.textController,
-                          focusNode: _model.textFieldFocusNode,
-                          onChanged: (_) => EasyDebounce.debounce(
-                            '_model.textController',
-                            Duration(milliseconds: 2000),
-                            () => setState(() {}),
-                          ),
-                          autofocus: true,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              '2rolmrs6' /* Search ... */,
-                            ),
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model.textControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30.0,
-                          borderWidth: 1.0,
-                          buttonSize: 44.0,
-                          icon: Icon(
-                            Icons.search_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 10.0, 0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '5me2j82w' /* Scheduled Appointments */,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 18.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 20.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                context.pushNamed('VetAddAppointment');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '8vejk0g0' /* Add New Appointment */,
+                              ),
+                              options: FFButtonOptions(
+                                width: 350.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xBFF5B900),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Urbanist',
+                                      color: Color(0xBD000000),
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                            ),
                           ),
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Urbanist',
-                                    fontSize: 18.0,
-                                  ),
-                        ),
+                        ],
                       ),
                     ),
                     Padding(
@@ -301,7 +234,15 @@ class _ViewAllAppointementsWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .labelLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 15.0,
+                                                              ),
                                                     ),
                                                     Row(
                                                       mainAxisSize:
@@ -316,11 +257,54 @@ class _ViewAllAppointementsWidgetState
                                                                       0.0,
                                                                       0.0),
                                                           child: Text(
-                                                            listViewAppointmentRecord
-                                                                .vetName,
+                                                            'Dr. ${listViewAppointmentRecord.vetName}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          'On ${dateTimeFormat(
+                                                            'MMMEd',
+                                                            listViewAppointmentRecord
+                                                                .date,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'at ${dateTimeFormat(
+                                                              'jm',
+                                                              listViewAppointmentRecord
+                                                                  .date,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
                                                           ),
                                                         ),
                                                       ],
@@ -329,61 +313,134 @@ class _ViewAllAppointementsWidgetState
                                                 ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: FlutterFlowIconButton(
-                                                borderColor: Color(0xC1FCDC0C),
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                fillColor: Color(0xFFFFB10B),
-                                                icon: Icon(
-                                                  Icons.edit_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  size: 20.0,
-                                                ),
-                                                onPressed: () async {
-                                                  context.pushNamed(
-                                                    'VetUpdateAppointmen',
-                                                    queryParameters: {
-                                                      'vetAppointmentRef':
-                                                          serializeParam(
-                                                        listViewAppointmentRecord
-                                                            .reference,
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              icon: Icon(
-                                                Icons.delete_outline,
+                                            Container(
+                                              width: 100.0,
+                                              height: 100.0,
+                                              decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                size: 24.0,
+                                                        .secondaryBackground,
                                               ),
-                                              onPressed: () async {
-                                                await listViewAppointmentRecord
-                                                    .reference
-                                                    .delete();
-                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                10.0, 0.0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Color(0xFFFFAD00),
+                                                      borderRadius: 20.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 35.0,
+                                                      fillColor:
+                                                          Color(0xFFFFAD00),
+                                                      icon: Icon(
+                                                        Icons.edit_outlined,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        size: 18.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        context.pushNamed(
+                                                          'VetUpdateAppointmen',
+                                                          queryParameters: {
+                                                            'vetAppointmentRef':
+                                                                serializeParam(
+                                                              listViewAppointmentRecord
+                                                                  .reference,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 35.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                    icon: Icon(
+                                                      Icons.delete_outline,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                      size: 18.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      var confirmDialogResponse =
+                                                          await showDialog<
+                                                                  bool>(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'Confirm Delete'),
+                                                                    content: Text(
+                                                                        'Are you sure you want to delete this appointment? This action cannot be undone.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                        child: Text(
+                                                                            'Cancel'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                        child: Text(
+                                                                            'Delete'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ) ??
+                                                              false;
+                                                      await listViewAppointmentRecord
+                                                          .reference
+                                                          .delete();
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Appointement deleted successfully',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  5550),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .success,
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),

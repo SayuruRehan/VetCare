@@ -78,14 +78,10 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Colors.transparent,
-          child: Center(
-            child: Image.asset(
-              'assets/images/Sniff_0.0_Splash@2x.png',
-              width: MediaQuery.sizeOf(context).width * 1.0,
-              height: MediaQuery.sizeOf(context).height * 1.0,
-              fit: BoxFit.cover,
-            ),
+          color: FlutterFlowTheme.of(context).primaryDark,
+          child: Image.asset(
+            'assets/images/logo_bg_remove.png',
+            fit: BoxFit.contain,
           ),
         )
       : widget.child;
@@ -141,12 +137,6 @@ final parametersBuilderMap =
         },
       ),
   'ViewAllAppointements': ParameterData.none(),
-  'SelectDate': ParameterData.none(),
-  'AddPrec': (data) async => ParameterData(
-        allParams: {
-          'dateTime': getParameter<DateTime>(data, 'dateTime'),
-        },
-      ),
   'VetAddAppointment': (data) async => ParameterData(
         allParams: {
           'vetDoc': await getDocumentParameter<VetRecord>(
@@ -176,8 +166,12 @@ final parametersBuilderMap =
         },
       ),
   'InviteUsers': ParameterData.none(),
-  'AddAppoint': ParameterData.none(),
-  'ViewAppoint': ParameterData.none(),
+  'EditAppoint': (data) async => ParameterData(
+        allParams: {
+          'editAppointRef':
+              getParameter<DocumentReference>(data, 'editAppointRef'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

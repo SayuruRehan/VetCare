@@ -13,17 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class InviteUsersModel extends FlutterFlowModel<InviteUsersWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

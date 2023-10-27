@@ -8,30 +8,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'edit_pres_model.dart';
-export 'edit_pres_model.dart';
+import 'edit_appoint_model.dart';
+export 'edit_appoint_model.dart';
 
-class EditPresWidget extends StatefulWidget {
-  const EditPresWidget({
+class EditAppointWidget extends StatefulWidget {
+  const EditAppointWidget({
     Key? key,
-    this.presRef,
+    this.editAppointRef,
   }) : super(key: key);
 
-  final DocumentReference? presRef;
+  final DocumentReference? editAppointRef;
 
   @override
-  _EditPresWidgetState createState() => _EditPresWidgetState();
+  _EditAppointWidgetState createState() => _EditAppointWidgetState();
 }
 
-class _EditPresWidgetState extends State<EditPresWidget> {
-  late EditPresModel _model;
+class _EditAppointWidgetState extends State<EditAppointWidget> {
+  late EditAppointModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditPresModel());
+    _model = createModel(context, () => EditAppointModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -41,6 +41,8 @@ class _EditPresWidgetState extends State<EditPresWidget> {
     _model.textFieldFocusNode3 ??= FocusNode();
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
+    _model.textController5 ??= TextEditingController();
+    _model.textFieldFocusNode5 ??= FocusNode();
   }
 
   @override
@@ -70,27 +72,25 @@ class _EditPresWidgetState extends State<EditPresWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
-          iconTheme: IconThemeData(color: Color(0xBD000000)),
           automaticallyImplyLeading: true,
           title: Text(
             FFLocalizations.of(context).getText(
-              'i14bn2en' /* Edit Prescription */,
+              'f6r9amuh' /* Edit Appointment */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Urbanist',
-                  color: Color(0xBD000000),
+                  color: Colors.white,
                   fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: [],
-          centerTitle: true,
+          centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
-          child: StreamBuilder<PrescriptionListRecord>(
-            stream: PrescriptionListRecord.getDocument(widget.presRef!),
+          child: StreamBuilder<AppointmentListRecord>(
+            stream: AppointmentListRecord.getDocument(widget.editAppointRef!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -106,29 +106,14 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                   ),
                 );
               }
-              final columnPrescriptionListRecord = snapshot.data!;
+              final columnAppointmentListRecord = snapshot.data!;
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  StreamBuilder<PrescriptionListRecord>(
-                    stream: PrescriptionListRecord.getDocument(widget.presRef!),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Color(0xBDF97639),
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      final columnPrescriptionListRecord = snapshot.data!;
-                      return Column(
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Row(
@@ -138,91 +123,59 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 32.0, 8.0, 0.0),
-                                  child: StreamBuilder<PrescriptionListRecord>(
-                                    stream: PrescriptionListRecord.getDocument(
-                                        widget.presRef!),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                Color(0xBDF97639),
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      final textFieldPrescriptionListRecord =
-                                          snapshot.data!;
-                                      return TextFormField(
-                                        controller: _model.textController1,
-                                        focusNode: _model.textFieldFocusNode1,
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText:
-                                              textFieldPrescriptionListRecord
-                                                  .petName,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
+                                  child: TextFormField(
+                                    controller: _model.textController1,
+                                    focusNode: _model.textFieldFocusNode1,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          columnAppointmentListRecord.vetName,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        validator: _model
-                                            .textController1Validator
-                                            .asValidator(context),
-                                      );
-                                    },
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textController1Validator
+                                        .asValidator(context),
                                   ),
                                 ),
                               ),
@@ -241,8 +194,8 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          columnPrescriptionListRecord.vetName,
+                                      labelText: columnAppointmentListRecord
+                                          .vetSpeciality,
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -306,13 +259,8 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: dateTimeFormat(
-                                        'd/M/y',
-                                        columnPrescriptionListRecord
-                                            .prescribedDate,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ),
+                                      labelText:
+                                          columnAppointmentListRecord.petName,
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -377,8 +325,8 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: dateTimeFormat(
-                                        'yMMMd',
-                                        columnPrescriptionListRecord.expDate,
+                                        'yMd',
+                                        columnAppointmentListRecord.date,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
                                       ),
@@ -432,28 +380,89 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                               ),
                             ],
                           ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 16.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController5,
+                                    focusNode: _model.textFieldFocusNode5,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          columnAppointmentListRecord.time,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textController5Validator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await widget.presRef!.update({
-                                  ...createPrescriptionListRecordData(
-                                    petName: _model.textController1.text,
-                                    vetName: _model.textController2.text,
-                                  ),
-                                  ...mapToFirestore(
-                                    {
-                                      'ExpDate': FieldValue.serverTimestamp(),
-                                      'PrescribedDate':
-                                          FieldValue.serverTimestamp(),
-                                    },
-                                  ),
-                                });
+                                await widget.editAppointRef!
+                                    .update(createAppointmentListRecordData(
+                                  vetName: columnAppointmentListRecord.vetName,
+                                  petName: columnAppointmentListRecord.petName,
+                                  vetSpeciality:
+                                      columnAppointmentListRecord.vetSpeciality,
+                                  date: columnAppointmentListRecord.date,
+                                  time: columnAppointmentListRecord.time,
+                                ));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Prescription Updated Successfully',
+                                      'Update Successfully',
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -466,10 +475,9 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                                 );
                               },
                               text: FFLocalizations.of(context).getText(
-                                'i754unsu' /* Update */,
+                                'r961k04t' /* Update */,
                               ),
                               options: FFButtonOptions(
-                                width: 170.0,
                                 height: 40.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
@@ -492,8 +500,8 @@ class _EditPresWidgetState extends State<EditPresWidget> {
                             ),
                           ),
                         ],
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ],
               );

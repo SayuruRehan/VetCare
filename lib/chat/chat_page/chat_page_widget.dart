@@ -99,23 +99,35 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
         ),
         title: Stack(
           children: [
-            if (!isGroupChat())
-              Text(
-                FFLocalizations.of(context).getText(
-                  'qp1zheoi' /* Group Chat */,
+            AuthUserStreamWidget(
+              builder: (context) => Text(
+                valueOrDefault<String>(
+                  currentUserDisplayName,
+                  'No name',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Urbanist',
-                      color: Colors.black,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
                     ),
               ),
-            if (!isGroupChat())
-              Text(
-                currentUserEmail,
-                style: FlutterFlowTheme.of(context).bodyMedium,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+              child: AuthUserStreamWidget(
+                builder: (context) => Text(
+                  valueOrDefault<String>(
+                    valueOrDefault(currentUserDocument?.bio, ''),
+                    'User',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Urbanist',
+                        color: Colors.black,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w300,
+                      ),
+                ),
               ),
+            ),
           ],
         ),
         actions: [],

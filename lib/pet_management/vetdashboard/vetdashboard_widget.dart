@@ -30,19 +30,6 @@ class _VetdashboardWidgetState extends State<VetdashboardWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
-    'floatingActionButtonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.easeInOut,
-          delay: 290.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
     'textOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -363,48 +350,11 @@ class _VetdashboardWidgetState extends State<VetdashboardWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF1F4F8),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () async {
-            context.pushNamed(
-              'AddPet',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.scale,
-                  alignment: Alignment.bottomCenter,
-                  duration: Duration(milliseconds: 10),
-                ),
-              },
-            );
-          },
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          icon: Icon(
-            Icons.add,
-            color: Color(0xFF0B0000),
-          ),
-          elevation: 8.0,
-          label: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                FFLocalizations.of(context).getText(
-                  'd65uu4rr' /* Add New Pet */,
-                ),
-                style: FlutterFlowTheme.of(context).bodyLarge.override(
-                      fontFamily: 'Outfit',
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            ],
-          ),
-        ).animateOnActionTrigger(
-          animationsMap['floatingActionButtonOnActionTriggerAnimation']!,
-        ),
         appBar: AppBar(
           backgroundColor: Color(0xFFDE8A1D),
           automaticallyImplyLeading: false,
           title: Text(
-            'Welcome ${currentUserEmail} !',
+            '${currentUserEmail} !',
             style: FlutterFlowTheme.of(context).displaySmall.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -1058,7 +1008,40 @@ class _VetdashboardWidgetState extends State<VetdashboardWidget>
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 18.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  children: [],
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          context.pushNamed('AddPet');
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'vbvptr53' /* Add New Pet */,
+                        ),
+                        options: FFButtonOptions(
+                          width: 350.0,
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0xBFF5B900),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Urbanist',
+                                    color: Color(0xBD000000),
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               StreamBuilder<List<PetRecord>>(

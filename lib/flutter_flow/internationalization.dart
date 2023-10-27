@@ -185,10 +185,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Your Profile',
       'si': '',
     },
-    'j4w0pw57': {
-      'en': '2/2',
-      'si': '',
-    },
     '2vqpqpon': {
       'en':
           'Fill out your profile now in order to complete setup of your profile.',
@@ -206,7 +202,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '@',
       'si': '',
     },
-    'sajr400d': {
+    'a6cpkt3b': {
       'en': 'Bio',
       'si': '',
     },
@@ -301,7 +297,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'UserName',
       'si': '',
     },
-    'ep7y2fzw': {
+    'mfh3nly4': {
       'en': 'Bio',
       'si': '',
     },
@@ -344,10 +340,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // chatPage
   {
-    'qp1zheoi': {
-      'en': 'Group Chat',
-      'si': '',
-    },
     'un1olygc': {
       'en': 'Home',
       'si': '',
@@ -356,7 +348,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // allChatsPage
   {
     'l5fw3ryh': {
-      'en': 'Messages',
+      'en': 'Chats',
+      'si': '',
+    },
+    '3zuq67a0': {
+      'en': '     Search',
       'si': '',
     },
     'nf53v8zt': {
@@ -416,10 +412,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // vetdashboard
   {
-    'd65uu4rr': {
-      'en': 'Add New Pet',
-      'si': '',
-    },
     'cgothh6q': {
       'en': 'Hi there 👋  Welcome to VetCare! 🐶',
       'si': '',
@@ -436,6 +428,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'No. of Appointments',
       'si': '',
     },
+    'vbvptr53': {
+      'en': 'Add New Pet',
+      'si': '',
+    },
     'qmkt9lzd': {
       'en': 'Pets',
       'si': '',
@@ -450,114 +446,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewAllAppointements
   {
-    'tmu4581s': {
-      'en': 'Appointments',
+    '8vejk0g0': {
+      'en': 'Add New Appointment',
       'si': '',
     },
-    '2rolmrs6': {
-      'en': 'Search ...',
-      'si': '',
-    },
-    '5me2j82w': {
+    'wzfwbh00': {
       'en': 'Scheduled Appointments',
       'si': '',
     },
     'euy1n494': {
-      'en': 'Appointments',
-      'si': '',
-    },
-  },
-  // SelectDate
-  {
-    'err6dsmi': {
-      'en': 'Month',
-      'si': '',
-    },
-    'ijzo6uv6': {
-      'en': 'SelectTime',
-      'si': '',
-    },
-    'he2tio46': {
-      'en': 'Week',
-      'si': '',
-    },
-    'e6u3lbdi': {
-      'en': 'Coming Up',
-      'si': '',
-    },
-    '62pyvvvu': {
-      'en': 'Doctors Check In',
-      'si': '',
-    },
-    'ple25uji': {
-      'en': '2:20pm',
-      'si': '',
-    },
-    'iq84wd7y': {
-      'en': 'Wed, 03/08/2022',
-      'si': '',
-    },
-    'mke29n30': {
-      'en': 'Past Due',
-      'si': '',
-    },
-    'qr6wzbqt': {
-      'en': 'Check In',
-      'si': '',
-    },
-    '56a72niy': {
-      'en': '2:20pm',
-      'si': '',
-    },
-    'xbi75g9i': {
-      'en': 'Wed, 03/08/2022',
-      'si': '',
-    },
-    '5d4xv7j0': {
-      'en': 'Select Date',
-      'si': '',
-    },
-    'q5nk5rm2': {
-      'en': '1',
-      'si': '',
-    },
-    'xcjix2a1': {
-      'en': 'Home',
-      'si': '',
-    },
-  },
-  // AddPrec
-  {
-    '54domoo4': {
-      'en': 'Add Prescription',
-      'si': '',
-    },
-    'hdkmuiww': {
-      'en': 'PrescriptionId',
-      'si': '',
-    },
-    '3vzfdg0h': {
-      'en': 'Prescribed Date',
-      'si': '',
-    },
-    '05hta9di': {
-      'en': 'Pet Name',
-      'si': '',
-    },
-    'vur9d6ys': {
-      'en': 'Vet Name',
-      'si': '',
-    },
-    'dimf0z3c': {
-      'en': 'Exp Date',
-      'si': '',
-    },
-    'higupq3a': {
-      'en': 'Submit Prescription',
-      'si': '',
-    },
-    '2gttizel': {
-      'en': 'Home',
+      'en': 'Appoints',
       'si': '',
     },
   },
@@ -567,48 +465,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add Appointment',
       'si': '',
     },
-    'omo5i9wv': {
-      'en': 'Option 1',
-      'si': '',
-    },
-    'td93szsk': {
-      'en': 'Select Veterinarian',
-      'si': '',
-    },
-    'd3vxhgr2': {
-      'en': 'Search for an item...',
-      'si': '',
-    },
-    '2ph57ykt': {
-      'en': 'Option 1',
-      'si': '',
-    },
-    '2sojj7gp': {
-      'en': 'Select speciality',
-      'si': '',
-    },
-    'o4tgg062': {
-      'en': 'Search for an item...',
+    'mojo2b9v': {
+      'en': 'Vet Name',
       'si': '',
     },
     'tr81q6pj': {
+      'en': 'Vet Speciality',
+      'si': '',
+    },
+    'bu6kxj8p': {
       'en': 'Pet name',
       'si': '',
     },
-    '1wmvmot3': {
-      'en': 'Date ',
-      'si': '',
-    },
-    '99rmitqg': {
-      'en': 'Time\n',
+    'lnue1ylw': {
+      'en': 'Select date and time',
       'si': '',
     },
     'rccnhhjk': {
       'en': 'Add',
       'si': '',
     },
-    'rl3onry7': {
-      'en': 'View',
+    'bmhohbx2': {
+      'en': 'Pet name is required',
+      'si': '',
+    },
+    'gesia7k1': {
+      'en': 'Please choose an option from the dropdown',
       'si': '',
     },
     'bikcyjnd': {
@@ -842,14 +724,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Update Appointment',
       'si': '',
     },
-    'qp8k5xzn': {
-      'en': 'Date',
-      'si': '',
-    },
-    'g6x9mbss': {
-      'en': 'Time\n',
-      'si': '',
-    },
     'm5oao4gm': {
       'en': 'Update',
       'si': '',
@@ -894,14 +768,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'si': '',
     },
     'o6zmlp9w': {
-      'en': 'Create',
+      'en': 'Submit Prescription',
       'si': '',
     },
     'tiz5dlrc': {
-      'en': 'View',
+      'en': 'View All Prescriptions',
       'si': '',
     },
-    'q29upblm': {
+    'cuuyuk28': {
+      'en': 'Pet name is required',
+      'si': '',
+    },
+    'vh3u8c9y': {
+      'en': 'Please choose an option from the dropdown',
+      'si': '',
+    },
+    'itt6xxtl': {
+      'en': 'Vet name is required',
+      'si': '',
+    },
+    'z9tkhdbr': {
+      'en': 'Please choose an option from the dropdown',
+      'si': '',
+    },
+    'igufgc0y': {
+      'en': 'Prescribed date is required',
+      'si': '',
+    },
+    '1how7v11': {
+      'en': 'Please choose an option from the dropdown',
+      'si': '',
+    },
+    '4ae5671q': {
+      'en': 'Expiry date is required',
+      'si': '',
+    },
+    'dgx58p61': {
+      'en': 'Please choose an option from the dropdown',
+      'si': '',
+    },
+    'jm3cntc0': {
       'en': 'Add Prescription',
       'si': '',
     },
@@ -936,73 +842,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'si': '',
     },
   },
-  // AddAppoint
+  // EditAppoint
   {
-    'r0dgab2u': {
-      'en': 'Add Appointment',
+    'r961k04t': {
+      'en': 'Update',
       'si': '',
     },
-    'dyzpcjrd': {
-      'en': 'Vet Name',
+    'f6r9amuh': {
+      'en': 'Edit Appointment',
       'si': '',
     },
-    'k1ewcsg6': {
-      'en': 'John Doe',
-      'si': '',
-    },
-    'ce6o1pmb': {
-      'en': 'Vet Speciality\n',
-      'si': '',
-    },
-    '7g90axcm': {
-      'en': 'Surgeon',
-      'si': '',
-    },
-    'lv5gt7td': {
-      'en': 'Pet Name',
-      'si': '',
-    },
-    'k538te0w': {
-      'en': 'Max',
-      'si': '',
-    },
-    'h361str2': {
-      'en': 'Appointment Date',
-      'si': '',
-    },
-    'cp0w3u6b': {
-      'en': ' Date',
-      'si': '',
-    },
-    'kxa18bdj': {
-      'en': 'Appointment Time',
-      'si': '',
-    },
-    'oqjpvyc2': {
-      'en': 'Time',
-      'si': '',
-    },
-    'sgusnrdr': {
-      'en': 'Create',
-      'si': '',
-    },
-    '3vtzzsgd': {
-      'en': 'View',
-      'si': '',
-    },
-    '2r10ler5': {
+    'avftquc3': {
       'en': 'Home',
       'si': '',
     },
   },
-  // ViewAppoint
+  // search
   {
-    'xh21xn3u': {
-      'en': 'Page Title',
-      'si': '',
-    },
-    'jkbf95kk': {
-      'en': 'Home',
+    '4gdf6lrv': {
+      'en': 'Search...',
       'si': '',
     },
   },

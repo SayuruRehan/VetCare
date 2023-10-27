@@ -401,7 +401,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   decoration: InputDecoration(
                                     labelText:
                                         FFLocalizations.of(context).getText(
-                                      'ep7y2fzw' /* Bio */,
+                                      'mfh3nly4' /* Bio */,
                                     ),
                                     labelStyle:
                                         FlutterFlowTheme.of(context).titleSmall,
@@ -508,7 +508,8 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Urbanist',
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(

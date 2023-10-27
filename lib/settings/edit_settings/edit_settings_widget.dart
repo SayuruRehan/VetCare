@@ -161,23 +161,74 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            valueOrDefault<String>(
-                              editSettingsUsersRecord.displayName,
-                              'UserName',
-                            ),
-                            style: FlutterFlowTheme.of(context).headlineSmall,
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 16.0),
-                              child: Text(
-                                editSettingsUsersRecord.email,
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context).bodySmall,
-                              ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 20.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: Image.network(
+                                        currentUserPhoto,
+                                        width: 60.0,
+                                        height: 60.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 5.0, 0.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.00, -1.00),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                editSettingsUsersRecord
+                                                    .displayName,
+                                                'UserName',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.00, -1.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 5.0, 0.0, 5.0),
+                                              child: Text(
+                                                editSettingsUsersRecord.email,
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -555,26 +606,27 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                         'w086rk5x' /* Log Out */,
                       ),
                       options: FFButtonOptions(
-                        width: 90.0,
+                        width: 150.0,
                         height: 40.0,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Colors.white,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodySmall.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF4B39EF),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodySmall
+                            .override(
+                              fontFamily: 'Lexend Deca',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.normal,
+                            ),
                         elevation: 3.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                   ],

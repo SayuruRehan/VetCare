@@ -133,7 +133,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'AddAppoint': AddAppointWidget(),
+      'ViewAllAppointements': ViewAllAppointementsWidget(),
       'CreatePres': CreatePresWidget(),
       'vetdashboard': VetdashboardWidget(),
       'allChatsPage': AllChatsPageWidget(),
@@ -172,7 +172,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.medical_services_rounded,
+                  Icons.medical_services,
                   color: currentIndex == 0
                       ? FlutterFlowTheme.of(context).secondary
                       : FlutterFlowTheme.of(context).grayIcon,
@@ -180,7 +180,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 ),
                 Text(
                   FFLocalizations.of(context).getText(
-                    '2r10ler5' /* Home */,
+                    'euy1n494' /* Appoints */,
                   ),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

@@ -54,66 +54,66 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: Color(0xFFDE8A1D),
-          automaticallyImplyLeading: false,
+          iconTheme: IconThemeData(color: Color(0xBD000000)),
+          automaticallyImplyLeading: true,
           title: Text(
             FFLocalizations.of(context).getText(
               'd4as1dlb' /* Prescriptions */,
             ),
+            textAlign: TextAlign.start,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Urbanist',
-                  color: Colors.white,
+                  color: Color(0xBD000000),
                   fontSize: 22.0,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 2.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 18.0),
-                  child: Container(
-                    width: 390.0,
-                    height: 272.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: StreamBuilder<List<PrescriptionListRecord>>(
-                      stream: queryPrescriptionListRecord(),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xBDF97639),
-                                ),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 18.0),
+                child: Container(
+                  width: 390.0,
+                  height: 272.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: StreamBuilder<List<PrescriptionListRecord>>(
+                    stream: queryPrescriptionListRecord(),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xBDF97639),
                               ),
                             ),
-                          );
-                        }
-                        List<PrescriptionListRecord>
-                            listViewPrescriptionListRecordList = snapshot.data!;
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          itemCount: listViewPrescriptionListRecordList.length,
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewPrescriptionListRecord =
-                                listViewPrescriptionListRecordList[
-                                    listViewIndex];
-                            return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 16.0, 0.0, 0.0),
+                          ),
+                        );
+                      }
+                      List<PrescriptionListRecord>
+                          listViewPrescriptionListRecordList = snapshot.data!;
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewPrescriptionListRecordList.length,
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewPrescriptionListRecord =
+                              listViewPrescriptionListRecordList[listViewIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 16.0, 0.0, 0.0),
+                            child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -125,35 +125,43 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
                                       Text(
                                         'Pet Name : ${listViewPrescriptionListRecord.petName}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Urbanist',
+                                              fontSize: 17.0,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'EditPres',
-                                            queryParameters: {
-                                              'presRef': serializeParam(
-                                                listViewPrescriptionListRecord
-                                                    .reference,
-                                                ParamType.DocumentReference,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Icon(
-                                          Icons.edit_square,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            150.0, 0.0, 0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'EditPres',
+                                              queryParameters: {
+                                                'presRef': serializeParam(
+                                                  listViewPrescriptionListRecord
+                                                      .reference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.edit_square,
+                                            color: Color(0xBFF5B900),
+                                            size: 24.0,
+                                          ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 75.0, 0.0),
+                                            0.0, 0.0, 50.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -167,7 +175,7 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
                                           child: Icon(
                                             Icons.delete_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .error,
                                             size: 24.0,
                                           ),
                                         ),
@@ -178,9 +186,13 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Vetanarian s Name : ${listViewPrescriptionListRecord.vetName}',
+                                        'Name of Veterinarian: ${listViewPrescriptionListRecord.vetName}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Urbanist',
+                                              fontSize: 16.0,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -196,7 +208,11 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
                                               .languageCode,
                                         )}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Urbanist',
+                                              fontSize: 16.0,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -212,22 +228,26 @@ class _ViewPrecWidgetState extends State<ViewPrecWidget> {
                                               .languageCode,
                                         )}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Urbanist',
+                                              fontSize: 16.0,
+                                            ),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                            ),
+                          );
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

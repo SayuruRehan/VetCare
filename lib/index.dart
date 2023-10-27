@@ -25,10 +25,6 @@ export '/pet_management/vet_single_pet/vet_single_pet_widget.dart'
     show VetSinglePetWidget;
 export '/appointment_management/view_all_appointements/view_all_appointements_widget.dart'
     show ViewAllAppointementsWidget;
-export '/appointment_management/select_date/select_date_widget.dart'
-    show SelectDateWidget;
-export '/prescription_management/add_prec/add_prec_widget.dart'
-    show AddPrecWidget;
 export '/appointment_management/vet_add_appointment/vet_add_appointment_widget.dart'
     show VetAddAppointmentWidget;
 export '/pet_management/add_pet/add_pet_widget.dart' show AddPetWidget;
@@ -44,7 +40,5 @@ export '/prescription_management/create_pres/create_pres_widget.dart'
 export '/prescription_management/edit_pres/edit_pres_widget.dart'
     show EditPresWidget;
 export '/chat/invite_users/invite_users_widget.dart' show InviteUsersWidget;
-export '/appointment_management/add_appoint/add_appoint_widget.dart'
-    show AddAppointWidget;
-export '/appointment_management/view_appoint/view_appoint_widget.dart'
-    show ViewAppointWidget;
+export '/appointment_management/edit_appoint/edit_appoint_widget.dart'
+    show EditAppointWidget;

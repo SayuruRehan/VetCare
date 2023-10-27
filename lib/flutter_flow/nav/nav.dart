@@ -178,19 +178,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ViewAllAppointements',
               path: 'viewAllAppointements',
-              builder: (context, params) => ViewAllAppointementsWidget(),
-            ),
-            FFRoute(
-              name: 'SelectDate',
-              path: 'selectDate',
-              builder: (context, params) => SelectDateWidget(),
-            ),
-            FFRoute(
-              name: 'AddPrec',
-              path: 'addPrec',
-              builder: (context, params) => AddPrecWidget(
-                dateTime: params.getParam('dateTime', ParamType.DateTime),
-              ),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'ViewAllAppointements')
+                  : ViewAllAppointementsWidget(),
             ),
             FFRoute(
               name: 'VetAddAppointment',
@@ -218,7 +208,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ViewPrec',
               path: 'viewPrec',
-              builder: (context, params) => ViewPrecWidget(),
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ViewPrecWidget(),
+              ),
             ),
             FFRoute(
               name: 'EditPet',
@@ -257,19 +250,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'InviteUsers',
               path: 'inviteUsers',
-              builder: (context, params) => InviteUsersWidget(),
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: InviteUsersWidget(),
+              ),
             ),
             FFRoute(
-              name: 'AddAppoint',
-              path: 'addAppoint',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'AddAppoint')
-                  : AddAppointWidget(),
-            ),
-            FFRoute(
-              name: 'ViewAppoint',
-              path: 'viewAppoint',
-              builder: (context, params) => ViewAppointWidget(),
+              name: 'EditAppoint',
+              path: 'editAppoint',
+              builder: (context, params) => EditAppointWidget(
+                editAppointRef: params.getParam('editAppointRef',
+                    ParamType.DocumentReference, false, ['AppointmentList']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -452,14 +444,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/Sniff_0.0_Splash@2x.png',
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: MediaQuery.sizeOf(context).height * 1.0,
-                      fit: BoxFit.cover,
-                    ),
+                  color: FlutterFlowTheme.of(context).primaryDark,
+                  child: Image.asset(
+                    'assets/images/logo_bg_remove.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : PushNotificationsHandler(child: page);

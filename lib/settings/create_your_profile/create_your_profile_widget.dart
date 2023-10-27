@@ -71,21 +71,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
           ),
           style: FlutterFlowTheme.of(context).headlineMedium,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 24.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getText(
-                'j4w0pw57' /* 2/2 */,
-              ),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Urbanist',
-                    color: FlutterFlowTheme.of(context).primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-          ),
-        ],
+        actions: [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -431,7 +417,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
-                                  'sajr400d' /* Bio */,
+                                  'a6cpkt3b' /* Bio */,
                                 ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).titleMedium,
@@ -521,11 +507,12 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Urbanist',
-                                    color: Colors.white,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: 'Urbanist',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
                           elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,

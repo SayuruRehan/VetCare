@@ -177,7 +177,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend Deca',
-                      color: FlutterFlowTheme.of(context).tertiary,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       fontSize: 16.0,
                       fontWeight: FontWeight.w500,
                     ),

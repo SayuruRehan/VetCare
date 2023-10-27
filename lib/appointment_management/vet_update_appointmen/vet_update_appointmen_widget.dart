@@ -559,10 +559,17 @@ class _VetUpdateAppointmenWidgetState extends State<VetUpdateAppointmenWidget> {
                                                         decoration:
                                                             InputDecoration(
                                                           labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'qp8k5xzn' /* Date */,
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            dateTimeFormat(
+                                                              'yMMMd',
+                                                              columnAppointmentRecord
+                                                                  .date,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                            'Date',
                                                           ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
@@ -676,12 +683,13 @@ class _VetUpdateAppointmenWidgetState extends State<VetUpdateAppointmenWidget> {
                                                         decoration:
                                                             InputDecoration(
                                                           labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'g6x9mbss' /* Time
- */
-                                                            ,
+                                                              dateTimeFormat(
+                                                            'jm',
+                                                            columnAppointmentRecord
+                                                                .date,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
                                                           ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
