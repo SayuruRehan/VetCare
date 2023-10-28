@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/chat/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -97,38 +96,68 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
             context.pop();
           },
         ),
-        title: Stack(
-          children: [
-            AuthUserStreamWidget(
-              builder: (context) => Text(
-                valueOrDefault<String>(
-                  currentUserDisplayName,
-                  'No name',
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Urbanist',
-                      fontSize: 24.0,
-                    ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
-              child: AuthUserStreamWidget(
-                builder: (context) => Text(
-                  valueOrDefault<String>(
-                    valueOrDefault(currentUserDocument?.bio, ''),
-                    'User',
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Urbanist',
-                        color: Colors.black,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w300,
+        title: Align(
+          alignment: AlignmentDirectional(0.00, 0.00),
+          child: Stack(
+            children: [
+              Align(
+                alignment: AlignmentDirectional(-1.00, 0.00),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(50.0),
+                      child: Image.network(
+                        widget.chatUser!.photoUrl,
+                        width: 50.0,
+                        height: 50.0,
+                        fit: BoxFit.cover,
                       ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            valueOrDefault<String>(
+                              widget.chatUser?.displayName,
+                              'No name',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Urbanist',
+                                  fontSize: 24.0,
+                                ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Text(
+                              valueOrDefault<String>(
+                                widget.chatUser?.bio,
+                                'User',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Urbanist',
+                                    color: Colors.black,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         actions: [],
         centerTitle: false,

@@ -258,7 +258,10 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
-                              _model.uploadedFileUrl1,
+                              valueOrDefault<String>(
+                                _model.uploadedFileUrl1,
+                                ' https://firebasestorage.googleapis.com/v0/b/vetcare-6a67d.appspot.com/o/users%2Fprofile-icon-png-898.png?alt=media&token=ee631345-99da-45b9-9c65-0d0904e4f0b0&_gl=1*bfl358*_ga*Mjg0MTEzNzkwLjE2OTg0MDMyOTQ.*_ga_CW55HF8NVT*MTY5ODQ0NDM5Ni4yLjEuMTY5ODQ0NjIyMi44LjAuMA..',
+                              ),
                             ),
                           ),
                         ),

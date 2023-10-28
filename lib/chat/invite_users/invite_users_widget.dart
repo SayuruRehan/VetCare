@@ -186,7 +186,10 @@ class _InviteUsersWidgetState extends State<InviteUsersWidget>
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(40.0),
                                   child: Image.network(
-                                    listViewUsersRecord.photoUrl,
+                                    valueOrDefault<String>(
+                                      listViewUsersRecord.photoUrl,
+                                      'https://firebasestorage.googleapis.com/v0/b/vetcare-6a67d.appspot.com/o/users%2Fprofile-icon-png-898.png?alt=media&token=ee631345-99da-45b9-9c65-0d0904e4f0b0&_gl=1*bfl358*_ga*Mjg0MTEzNzkwLjE2OTg0MDMyOTQ.*_ga_CW55HF8NVT*MTY5ODQ0NDM5Ni4yLjEuMTY5ODQ0NjIyMi44LjAuMA..',
+                                    ),
                                     width: 60.0,
                                     height: 60.0,
                                     fit: BoxFit.cover,
@@ -203,7 +206,10 @@ class _InviteUsersWidgetState extends State<InviteUsersWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      listViewUsersRecord.displayName,
+                                      valueOrDefault<String>(
+                                        listViewUsersRecord.displayName,
+                                        'No name',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
@@ -218,7 +224,10 @@ class _InviteUsersWidgetState extends State<InviteUsersWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 0.0, 0.0),
                                     child: Text(
-                                      listViewUsersRecord.email,
+                                      valueOrDefault<String>(
+                                        listViewUsersRecord.bio,
+                                        'No bio',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(

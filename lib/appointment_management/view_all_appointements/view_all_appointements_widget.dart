@@ -106,7 +106,7 @@ class _ViewAllAppointementsWidgetState
                                 context.pushNamed('VetAddAppointment');
                               },
                               text: FFLocalizations.of(context).getText(
-                                '8vejk0g0' /* Add New Appointment */,
+                                '1g1ug3t0' /* Add New Appointment */,
                               ),
                               options: FFButtonOptions(
                                 width: 350.0,

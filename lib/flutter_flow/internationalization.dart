@@ -428,7 +428,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'No. of Appointments',
       'si': '',
     },
-    'vbvptr53': {
+    'rbx0jj6o': {
       'en': 'Add New Pet',
       'si': '',
     },
@@ -446,7 +446,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewAllAppointements
   {
-    '8vejk0g0': {
+    '1g1ug3t0': {
       'en': 'Add New Appointment',
       'si': '',
     },
